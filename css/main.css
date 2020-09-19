@@ -1,6 +1,10 @@
+body{
+    background-color: cornsilk;
+}
+
 #hero-image{
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
 }
 #hero{
     border-bottom: solid 1px black;

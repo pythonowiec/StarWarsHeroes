@@ -33,10 +33,10 @@ class StarWarsCharacters{
             hero.id = 'hero';
             this.catalog.appendChild(hero);
 
-            const nameHero = document.createElement('p');
-            nameHero.id = 'hero-name';
-            nameHero.innerHTML += characters[index].name;
-            hero.appendChild(nameHero);
+            const descriptionHero = document.createElement('p');
+            descriptionHero.id = 'hero-description';
+            descriptionHero.innerHTML += `${characters[index].name} | height: ${characters[index].height} m | ${characters[index].mass} kg | homeworld: ${characters[index].homeworld} `;
+            hero.appendChild(descriptionHero);
 
             const image = document.createElement('img');
             image.id = 'hero-image';
