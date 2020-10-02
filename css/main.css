@@ -1,14 +1,20 @@
 body{
-    background-color: cornsilk;
+    background-color: black;
+    color: white;
+    font-family: 'Lato';
 }
 
+.logo{
+    height: 150px;
+    width: 250px;
+}
 #hero-image{
     height: 200px;
     width: 200px;
     transition: 0.3s;
 }
 #hero{
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px whitesmoke;
 }
 #hero-image:hover{
     width: 500px;
@@ -16,12 +22,27 @@ body{
 } 
 
 #clear{
+    height: 25px;
+    width: 70px;
+    background-color: lightblue;
     position: absolute;
-    top: 80px;
+    top: 160px;
     left: 400px;
     border-radius: 3px;
+    color: black;
+    transition: 0.5s;
+}
+
+#clear:hover{
+    background-color: rgb(93, 133, 187);
+    color: lightcyan;
 }
 
 .search-form{
+    border:1px solid blue ;
     width: 300px;
+}
+.search__content{
+    padding-top: 15px;
+    padding-bottom: 30px;
 }

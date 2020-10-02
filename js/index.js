@@ -34,6 +34,7 @@ class StarWarsCharacters{
         this.search.addEventListener('input', () => this.filtler());
         this.clear.addEventListener('click', () => {
             this.searchContent.innerHTML = "";
+            this.search.value = "";
         });
         
     }
@@ -123,7 +124,6 @@ class StarWarsCharacters{
         this.clear.innerHTML = "clear";
         this.searchContent.appendChild(this.clear);
         
-        console.log(result)
-        console.log(test);
+
     }
 } 
