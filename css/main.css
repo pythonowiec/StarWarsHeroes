@@ -14,3 +14,14 @@ body{
     width: 500px;
     height: 500px;	
 } 
+
+#clear{
+    position: absolute;
+    top: 80px;
+    left: 400px;
+    border-radius: 3px;
+}
+
+.search-form{
+    width: 300px;
+}

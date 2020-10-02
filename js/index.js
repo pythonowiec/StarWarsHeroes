@@ -7,6 +7,7 @@ class StarWarsCharacters{
 
         this.API_ENDPOINT = `${this.API}`;
 
+        this.clear = document.createElement("button");
         this.catalog = null;
         this.search = null;
         this.hero = null;
@@ -30,7 +31,10 @@ class StarWarsCharacters{
     }    
 
     addEvent(){
-        this.search.addEventListener('change', () => this.filtler());
+        this.search.addEventListener('input', () => this.filtler());
+        this.clear.addEventListener('click', () => {
+            this.searchContent.innerHTML = "";
+        });
         
     }
 
@@ -90,6 +94,7 @@ class StarWarsCharacters{
         let filtlerResult = [];
         let result = [];
         this.searchContent.innerHTML = "";
+
         this.characters.forEach(el =>{
             filtlerResult.push(el.name);
 
@@ -97,6 +102,9 @@ class StarWarsCharacters{
         
 
         result = filtlerResult.filter(e => e.includes(searchQuery));
+        if (result.length == 0){
+            this.searchContent.innerHTML = "not found";
+        }
         for (let index = 0; index < this.characters.length; index++) {
             
             if(result.includes(this.characters[index].name)){
@@ -107,8 +115,14 @@ class StarWarsCharacters{
                 this.searchContent.appendChild(this.outcome);
             }
             
+            
         }
               
+        
+        this.clear.id = "clear";
+        this.clear.innerHTML = "clear";
+        this.searchContent.appendChild(this.clear);
+        
         console.log(result)
         console.log(test);
     }
