@@ -24,14 +24,21 @@ class StarWarsCharacters{
         this.catalog = document.querySelector(this.UiSelectors.content);
         this.search = document.querySelector(this.UiSelectors.search);
         this.searchContent = document.querySelector(this.UiSelectors.searchContent);
-        this.pullCharacters();
+        if(this.search.value===""){
+            this.pullCharacters();
+        }
+        
         this.addEvent();
         
         
     }    
 
     addEvent(){
-        this.search.addEventListener('input', () => this.filtler());
+        this.search.addEventListener('input', () => {
+            this.catalog.innerHTML = "";
+            this.filtler();
+        });
+
         this.clear.addEventListener('click', () => {
             this.searchContent.innerHTML = "";
             this.search.value = "";
@@ -63,16 +70,17 @@ class StarWarsCharacters{
                 name: characters[index].name,
                 height: characters[index].height,
                 mass: characters[index].mass,
-                homeworld: characters[index].homeworld
+                homeworld: characters[index].homeworld,
+                image: characters[index].image
 
             });
             
         }
         
-        // this.characters = [...characters];
+    
 
         
-        console.log(this.characters);
+       
     }
 
     async fetchData(url){
@@ -100,7 +108,15 @@ class StarWarsCharacters{
             filtlerResult.push(el.name);
 
         });
-        
+
+        let litter = [];
+        for (let index = 0; index < searchQuery.length; index++) {
+            litter[index] = searchQuery[index];
+            if(index == 0){
+                litter[0] = searchQuery[0].toUpperCase();
+            }
+        }
+        searchQuery = litter.join("");
 
         result = filtlerResult.filter(e => e.includes(searchQuery));
         if (result.length == 0){
@@ -109,20 +125,27 @@ class StarWarsCharacters{
         for (let index = 0; index < this.characters.length; index++) {
             
             if(result.includes(this.characters[index].name)){
+                this.hero = document.createElement('div')
+                this.hero.id = 'hero';
+                this.catalog.appendChild(this.hero);
+
+                this.image = document.createElement('img');
+                this.image.id = 'hero-image';
                 this.image.setAttribute('src', this.characters[index].image);
+                
+
                 this.outcome = document.createElement("div")
                 this.outcome.id = "result";
                 this.outcome.innerHTML = `${this.characters[index].name} | height: ${this.characters[index].height} m | ${this.characters[index].mass} kg | homeworld: ${this.characters[index].homeworld} `;
-                this.searchContent.appendChild(this.outcome);
+
+                this.hero.appendChild(this.outcome);
+                this.hero.appendChild(this.image);
             }
             
             
         }
               
         
-        this.clear.id = "clear";
-        this.clear.innerHTML = "clear";
-        this.searchContent.appendChild(this.clear);
         
 
     }
